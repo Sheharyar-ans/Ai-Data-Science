@@ -1,0 +1,6 @@
+{
+  "name": "Data Science Auto-Pipeline",
+  "description": "An automated data science pipeline generator that takes a dataset and a requirement, then runs multiple AI engines to output Python execution code, Colab notebooks, and Streamlit dashboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

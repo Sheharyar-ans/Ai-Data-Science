@@ -1,0 +1,82 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "provider": { "type": "string" },
+        "createdAt": { "type": "integer" },
+        "lastLogin": { "type": "integer" },
+        "plan": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "ApiKey": {
+      "title": "ApiKey",
+      "description": "API Keys for a user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Data science project",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" }
+      },
+      "required": ["projectId", "userId", "title"]
+    },
+    "Result": {
+      "title": "Result",
+      "description": "Analysis result for a project",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string" }
+      },
+      "required": ["projectId"]
+    },
+    "Log": {
+      "title": "Log",
+      "description": "Execution log",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "projectId": { "type": "string" }
+      },
+      "required": ["userId", "projectId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Stores user profiles"
+    },
+    "/apiKeys/{userId}": {
+      "schema": { "$ref": "#/entities/ApiKey" },
+      "description": "Stores encrypted API keys"
+    },
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Stores data science projects"
+    },
+    "/results/{projectId}": {
+      "schema": { "$ref": "#/entities/Result" },
+      "description": "Stores analysis results"
+    },
+    "/logs/{logId}": {
+      "schema": { "$ref": "#/entities/Log" },
+      "description": "Execution logs"
+    }
+  }
+}
